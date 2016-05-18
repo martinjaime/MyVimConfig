@@ -40,7 +40,7 @@ hi PMenuSel guifg=#282828 ctermfg=235 guibg=#b8c468 ctermbg=149 gui=NONE cterm=N
 hi PmenuSbar guifg=#d1b580 ctermfg=180 guibg=#d1b580 ctermbg=180 gui=NONE cterm=NONE
 hi PmenuThumb guifg=#f9b943 ctermfg=215 guibg=#f9b943 ctermbg=215 gui=NONE cterm=NONE
 hi Question guifg=#b8c468 ctermfg=149 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Search guifg=#e9edb2 ctermfg=193 guibg=NONE ctermbg=NONE gui=underline cterm=underline
+hi Search guifg=#e9edb2 ctermfg=193 guibg=NONE ctermbg=NONE gui=reverse cterm=reverse
 hi SpecialKey guifg=#66afce ctermfg=74 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi SpellBad guifg=#f43753 ctermfg=203 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi SpellLocal guifg=#d1b580 ctermfg=180 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
