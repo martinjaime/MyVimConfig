@@ -52,7 +52,7 @@ hi TabLine guifg=#999999 ctermfg=246 guibg=#444444 ctermbg=238 gui=NONE cterm=NO
 hi TabLineFill guifg=NONE ctermfg=NONE guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
 hi TabLineSel guifg=#b8c468 ctermfg=149 guibg=NONE ctermbg=NONE gui=bold cterm=bold
 hi Title guifg=#abd9ec ctermfg=153 guibg=NONE ctermbg=NONE gui=bold cterm=bold
-hi Visual guifg=NONE ctermfg=NONE guibg=#0b0b0b ctermbg=232 gui=NONE cterm=NONE
+hi Visual guifg=NONE ctermfg=NONE guibg=#0b0b0b ctermbg=232 gui=NONE cterm=reverse
 hi WarningMsg guifg=#f43753 ctermfg=203 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi WildMenu guifg=#282828 ctermfg=235 guibg=#b8c468 ctermbg=149 gui=bold cterm=bold
 hi Comment guifg=#666666 ctermfg=242 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE

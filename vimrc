@@ -32,6 +32,15 @@ Plugin 'VundleVim/Vundle.vim'
 " Scala plugin https://github.com/derekwyatt/vim-scala
 Plugin 'derekwyatt/vim-scala'
 
+" Autocomplete plugin
+Plugin 'Valloric/YouCompleteMe'
+
+" CoffeeScript support | added Thu May 19 11:57:17 PDT 2016
+Plugin 'kchmck/vim-coffee-script'
+
+" Javascript support | added Thu May 19 14:59:56 PDT 2016
+Plugin 'pangloss/vim-javascript'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -98,8 +107,11 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 set nowrap                      " Continue line outside of view
 set colorcolumn=80              " set ruler at 80
 
+" Enable colors
+set t_Co=256
 " color scheme
-colorscheme tender
+"colorscheme tender
+colorscheme lucid
 
 " Detect file types
 autocmd BufRead,BufNewFile *httpd*.conf setfiletype apache "Apache config files
@@ -124,4 +136,10 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 set vb
 
 " turn syntax dection on
-syntax on
+" syntax on
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
