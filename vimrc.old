@@ -1,0 +1,93 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set smartindent     " 1 tab == 4 spaces
+set tabstop=4     
+set shiftwidth=4 
+set expandtab       " tabs are spaces 
+set completeopt=menu
+set showcmd
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"colorscheme osx_like
+colorscheme desert 
+
+" Enable syntax highlighting
+" syntax enable
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remember and reload file state. Not the file itself.
+" Inteded for folds.
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+" Show line numbers
+set number
+
+" Always display the status bar.
+set laststatus=2 
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Remap controls for moving between splits to simply <Ctrl-x> where x is the
+"       move key.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+
+" For text files, set a textwidth of 80 columns
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Highlight search results
+set hlsearch
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+" Delete trailing white space on save, useful for Python
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+
+set splitbelow
+set splitright
+
+"Use TAB to complete when typing words, else inserts TABs as usual.
+""Uses dictionary and source files to find matching words to complete.
+
+"See help completion for source,
+""Note: usual completion is on <C-n> but more trouble to press all the time.
+"Never type the same word twice and maybe learn a new spellings!
+""Use the Linux dictionary when spelling is in doubt.
+"Window users can copy the file to their machine.
+function! Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<Tab>"
+    endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words
+
+syntax on           " enable syntax processing
+filetype indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Backup, and swap file management
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
