@@ -89,10 +89,14 @@ set completeopt-=preview
 set title                       " show window title
 set autoindent                  " autoindent when pressing Enter
 set background=dark             " use a dark scheme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=4                   " use 4 spaces for tabs
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
 set ls=2
 set ruler
 set showtabline=2
@@ -135,8 +139,8 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 " Kill sounds
 set vb
 
-" turn syntax dection on
-" syntax on
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
