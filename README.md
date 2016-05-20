@@ -10,4 +10,8 @@ back up your current vim configuration stored in .vim and .vimrc files.
 git clone https://github.com/martinjaime/MyVimConfig.git vim
 ln -s ./vim ~/.vim
 ln -s ./vim/vimrc ~/.vimrc
+# and update the submodules
+git submodule init 
+git submodule update
 ```
+
