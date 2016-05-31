@@ -124,7 +124,7 @@ set cursorline                  " highlight the current line
 set fileformat=unix             " unix file format by default
 set fileformats=unix,dos,mac    " available formats
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-set nowrap                      " Continue line outside of view
+"set nowrap                      " Continue line outside of view
 set colorcolumn=80              " set ruler at 80
 
 " Enable colors
@@ -173,6 +173,9 @@ nnoremap <C-K> <C-W><C-K>
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Enable clipboard sharing -- doesn't work
+"set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete functionality. Uncomment if YouCompleteMe does not work.
