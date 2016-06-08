@@ -160,6 +160,9 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 " Kill sounds
 set vb
 
+" Typing ii will switch to Normal mode.
+imap ii <Esc>
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
