@@ -12,6 +12,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
@@ -30,16 +31,13 @@ Plugin 'tpope/vim-fugitive' " add git funcitonality
 "" The sparkup vim script is in a subdirectory of this repo called vim.
 "" Pass the path to set the runtimepath properly.
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" Install L9 and avoid a Naming conflict if you've already installed a
-"" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" Scala plugin https://github.com/derekwyatt/vim-scala
+" Scala plugin
 Plugin 'derekwyatt/vim-scala'
 
-" Autocomplete plugin. Does not work on mac.
-"Plugin 'Valloric/YouCompleteMe'
+" Autocomplete plugin.
+Plugin 'Valloric/YouCompleteMe'
 
 " CoffeeScript support | added Thu May 19 11:57:17 PDT 2016
 Plugin 'kchmck/vim-coffee-script'
@@ -170,6 +168,8 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 "       move key.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-L> <C-W><C-L>
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
