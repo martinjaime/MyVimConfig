@@ -151,7 +151,7 @@ autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
 
 autocmd FileType crontab    setlocal nobackup nowritebackup
 
-" Avoid typos
+" Avoid typos when qitting and writing
 "noremap :W :w
 "noremnp :Q :q
 
@@ -166,10 +166,10 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Remap controls for moving between splits to simply <Ctrl-x> where x is the
 "       move key.
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-H> <C-W><C-H>
-"nnoremap <C-L> <C-W><C-L>
+nnoremap <C-N> <C-W><C-J>
+nnoremap <C-P> <C-W><C-K>
+nnoremap <C-B> <C-W><C-H>
+nnoremap <C-F> <C-W><C-L>
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file

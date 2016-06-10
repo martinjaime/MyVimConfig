@@ -4,13 +4,14 @@ A work in Progress. Inspired by thunderboltsid's [vim-configuration](https://git
 ##Setup
 
 First go to a directory where you would like to store this configuration and 
-back up your current vim configuration stored in .vim and .vimrc files.
+back up your current vim configuration stored in .vim and .vimrc files in your
+home directory.
 
 ```
 git clone https://github.com/martinjaime/MyVimConfig.git vim
 ```
 Then create a symbolic link from the repository to .vim in your home directory.
-I clone it in my Documents folder. Also create a link for your .vimrc file.
+Create a link for .vim and .vimrc files. I had cloned it in my Documents folder.
 
 ```
 ln -s ~/Documents/vim ~/.vim
@@ -19,6 +20,7 @@ ln -s ~/Documents/vim/vimrc ~/.vimrc
 Initiate and update submodules.
 
 ```
+cd vim
 git submodule init
 git submodule update
 ```
