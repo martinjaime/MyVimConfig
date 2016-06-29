@@ -14,7 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
+" Keep Plugin commands between vundle#begin()/end().
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -32,6 +33,12 @@ Plugin 'tpope/vim-fugitive' " add git funcitonality
 "" Pass the path to set the runtimepath properly.
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Javascript and JS-based languages
+" Plugin 'othree/javascript-libraries-syntax'
+
+" Livescript plugin
+Plugin 'gkz/vim-ls'
 
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
@@ -106,10 +113,10 @@ set background=dark             " use a dark scheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set expandtab
 set tabstop=2                   " use 4 spaces for tabs
 set shiftwidth=2
 set softtabstop=2
-set expandtab
 
 set ls=2
 set ruler
@@ -149,27 +156,33 @@ autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
 
+" Kill sounds
+set vb
+
 autocmd FileType crontab    setlocal nobackup nowritebackup
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Useful Remaping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Avoid typos when qitting and writing
 "noremap :W :w
 "noremnp :Q :q
 
-" Kill sounds
-set vb
+" Toggle NERDTree
+nmap <silent> <C-D> :NERDTreeToggle<CR>
 
 " Typing ii will switch to Normal mode.
 imap ii <Esc>
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" <Ctrl-c> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-c> :nohl<CR><C-l>
 
 " Remap controls for moving between splits to simply <Ctrl-x> where x is the
 "       move key.
-nnoremap <C-N> <C-W><C-J>
-nnoremap <C-P> <C-W><C-K>
-nnoremap <C-B> <C-W><C-H>
-nnoremap <C-F> <C-W><C-L>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
