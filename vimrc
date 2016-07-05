@@ -37,6 +37,12 @@ Plugin 'tpope/vim-fugitive' " add git funcitonality
 " Javascript and JS-based languages
 " Plugin 'othree/javascript-libraries-syntax'
 
+" Quote and parenthesis autocompletion
+Plugin 'Raimondi/delimitMate'
+
+" Git gutter info to display added, modified, and removed lines.
+Plugin 'airblade/vim-gitgutter'
+
 " Livescript plugin
 Plugin 'gkz/vim-ls'
 
