@@ -20,8 +20,8 @@ Plugin 'VundleVim/Vundle.vim'
 "" Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 
-" Plugin on GitHub repo. 
-Plugin 'tpope/vim-fugitive' " add git funcitonality 
+" Plugin on GitHub repo.
+Plugin 'tpope/vim-fugitive' " add git funcitonality
 
 "" plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -58,7 +58,7 @@ Plugin 'kchmck/vim-coffee-script'
 " Javascript support | added Thu May 19 14:59:56 PDT 2016
 "Plugin 'pangloss/vim-javascript'
 
-" Nerdtree 
+" Nerdtree
 Plugin 'scrooloose/nerdtree'
 
 " Git plugin for Nerdtree
@@ -66,6 +66,12 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Tmux navigation plugin
 Plugin 'christoomey/vim-tmux-navigator'
+
+" Lean & mean status/tabline for vim that's light as air.
+Plugin 'vim-airline/vim-airline'
+" See https://github.com/vim-airline/vim-airline/wiki/Screenshots
+" For theme previews
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -149,8 +155,8 @@ colorscheme lucid " i like this one
 
 " Remember and reload file state. Not the file itself.
 " Inteded for folds.
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave .*. mkview
+au BufWinEnter .*. silent loadview
 
 " Detect file types
 autocmd BufRead,BufNewFile *httpd*.conf setfiletype apache "Apache config files
