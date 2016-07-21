@@ -72,6 +72,8 @@ Plugin 'vim-airline/vim-airline'
 " See https://github.com/vim-airline/vim-airline/wiki/Screenshots
 " For theme previews
 Plugin 'vim-airline/vim-airline-themes'
+" Set vim-airline theme with
+let g:airline_theme='bubblegum'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
