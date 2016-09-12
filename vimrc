@@ -100,6 +100,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Remap the leader to something more comfortable
 let mapleader=","
 
+map <leader>c "*y
+map <leader>v "*p
+
 " turn syntax dection on
 syntax on
 
