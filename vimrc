@@ -55,9 +55,6 @@ Plugin 'Valloric/YouCompleteMe'
 " CoffeeScript support | added Thu May 19 11:57:17 PDT 2016
 Plugin 'kchmck/vim-coffee-script'
 
-" Javascript support | added Thu May 19 14:59:56 PDT 2016
-"Plugin 'pangloss/vim-javascript'
-
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 
@@ -74,6 +71,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Set vim-airline theme with
 let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts = 1
 
 " go plugin
 Plugin 'fatih/vim-go'
@@ -84,7 +82,22 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
+au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 
+" vimwiki
+Plugin 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/Google\ Drive/vimwiki'}]
+
+" csv.vim
+Plugin 'chrisbra/csv.vim'
+
+" Javascript and jsx
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+" ES6
+"Plugin 'isRuslan/vim-es6'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -201,6 +214,7 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 
 " Toggle NERDTree
 nmap <silent> <C-D> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 
 " Typing ii will switch to Normal mode.
 imap ii <Esc>
