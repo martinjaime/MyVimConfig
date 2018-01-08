@@ -82,22 +82,69 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-let g:go_fmt_command = "gofmt"
+"let g:go_fmt_command = "gofmt"
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 " vimwiki
 Plugin 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Google\ Drive/vimwiki'}]
-
 " csv.vim
 Plugin 'chrisbra/csv.vim'
 
 " Javascript and jsx
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 " ES6
 "Plugin 'isRuslan/vim-es6'
+
+" autocomplete snippets of some languages
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Optional:
+Plugin 'honza/vim-snippets'
+
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1 " disable folding
+set conceallevel=2 " Conceal nonprinting markdown characters
+
+" vim surround
+Plugin 'tpope/vim-surround'
+
+" vim stylus
+Plugin 'wavded/vim-stylus'
+
+" fish syntax highlighting
+Plugin 'dag/vim-fish'
+
+" autoreload vim
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+
+" pug syntax highlighting
+Plugin 'digitaltoad/vim-pug'
+
+" ctrlp: fuzzy file searching
+Plugin 'kien/ctrlp.vim'
+
+" prettier for js, typescripts, less, scss, css, json, graphql, and markdown
+Plugin 'prettier/vim-prettier'
+
+" Searcher using silver searcher
+Plugin 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev ag Ack
+
+" comments
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -124,6 +171,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Remap the leader to something more comfortable
 let mapleader=","
 
+" clipboard stuff
 map <leader>c "*y
 map <leader>v "*p
 
@@ -133,6 +181,7 @@ syntax on
 " Generic config
 set backspace=indent,eol,start  " Backspace for dummies
 set number                      " Line numbers on
+set relativenumber              " line numbers around cursor are relative
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms
@@ -167,7 +216,7 @@ set ruler
 set showtabline=2
 set formatoptions=qroct
 set showcmd
-"set mouse=a                     " allow mouse usage for all modes (a)
+set mouse=a                     " allow mouse usage for a[ll] modes
 set spelllang=en_us             " current language
 set cursorline                  " highlight the current line
 set fileformat=unix             " unix file format by default
@@ -214,7 +263,9 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 
 " Toggle NERDTree
 nmap <silent> <C-D> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$', 'node_modules']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules', 'vendor']
+" Close NERDTree on open
+"let g:NERDTreeQuitOnOpen = 1
 
 " Typing ii will switch to Normal mode.
 imap ii <Esc>
@@ -235,8 +286,13 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Enable clipboard sharing -- doesn't work
+" Enable clipboard sharing
 "set clipboard=unnamed
+
+" Program to use for evaluating Python code. Setting this makes startup faster.
+" Also useful for working with virtualenvs.
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete functionality. Uncomment if YouCompleteMe does not work.
@@ -248,12 +304,13 @@ endif
 "Never type the same word twice and maybe learn a new spellings!
 ""Use the Linux dictionary when spelling is in doubt.
 "Window users can copy the file to their machine.
-function! Tab_Or_Complete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-N>"
-    else
-        return "\<Tab>"
-    endif
-endfunction
-:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-:set dictionary="/usr/dict/words
+"function! Tab_Or_Complete()
+"    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+"        return "\<C-N>"
+"    else
+"        return "\<Tab>"
+"    endif
+"endfunction
+":inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words
+set runtimepath^=~/.vim/bundle/ctrlp.vim
