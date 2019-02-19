@@ -1,172 +1,127 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle setup
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" need to set the shell, because it won't work with fish
+set shell=/bin/bash\ -i
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug setup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.local/share/nvim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin()/end().
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-
-" Plugin on GitHub repo.
-Plugin 'tpope/vim-fugitive' " add git funcitonality
-
-"" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-
-"" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-
-"" The sparkup vim script is in a subdirectory of this repo called vim.
-"" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Javascript and JS-based languages
-" Plugin 'othree/javascript-libraries-syntax'
-
-" Quote and parenthesis autocompletion
-Plugin 'Raimondi/delimitMate'
-
-" Git gutter info to display added, modified, and removed lines.
-Plugin 'airblade/vim-gitgutter'
-
-" Livescript plugin
-Plugin 'gkz/vim-ls'
-
-" Scala plugin
-Plugin 'derekwyatt/vim-scala'
-
-" Autocomplete plugin.
-Plugin 'Valloric/YouCompleteMe'
-
-" CoffeeScript support | added Thu May 19 11:57:17 PDT 2016
-Plugin 'kchmck/vim-coffee-script'
-
-" Nerdtree
-Plugin 'scrooloose/nerdtree'
+" File tree viewer
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Git plugin for Nerdtree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+"Plugin 'L9'
+
+" Javascript and JS-based languages
+" Plug 'othree/javascript-libraries-syntax'
+
+" Quote and parenthesis autocompletion
+"Plugin 'Raimondi/delimitMate' disabling cuz buggy
+Plug 'jiangmiao/auto-pairs'
+
+" Git gutter info to display added, modified, and removed lines.
+Plug 'airblade/vim-gitgutter'
+
+" Scala plugin
+Plug 'derekwyatt/vim-scala'
+
+" Autocomplete plugin.
+Plug 'Valloric/YouCompleteMe'
 
 " Tmux navigation plugin
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Lean & mean status/tabline for vim that's light as air.
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " See https://github.com/vim-airline/vim-airline/wiki/Screenshots
 " For theme previews
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 " Set vim-airline theme with
 let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1
 
-" go plugin
-Plugin 'fatih/vim-go'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-"let g:go_fmt_command = "gofmt"
-au FileType go nmap <leader>gd <Plug>(go-doc)
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
 " vimwiki
-Plugin 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Google\ Drive/vimwiki'}]
+
 " csv.vim
-Plugin 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 
 " Javascript and jsx
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 " ES6
 "Plugin 'isRuslan/vim-es6'
 
 " autocomplete snippets of some languages
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 
 " Optional:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1 " disable folding
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" let g:vim_markdown_folding_disabled = 1 " disable folding
 set conceallevel=2 " Conceal nonprinting markdown characters
 
 " vim surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " vim stylus
-Plugin 'wavded/vim-stylus'
+Plug 'wavded/vim-stylus'
 
 " fish syntax highlighting
-Plugin 'dag/vim-fish'
+Plug 'dag/vim-fish'
 
 " autoreload vim
-Plugin 'tmux-plugins/vim-tmux-focus-events'
-
-" pug syntax highlighting
-Plugin 'digitaltoad/vim-pug'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " ctrlp: fuzzy file searching
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = '0'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
 
 " prettier for js, typescripts, less, scss, css, json, graphql, and markdown
-Plugin 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier'
 
 " Searcher using silver searcher
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-cnoreabbrev ag Ack
+cnoreabbrev ag Ack!
 
 " comments
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"" colorschemes
+Plug 'flazz/vim-colorschemes'
+colorscheme lucid " i like this one
+" colorscheme molokai
+colorscheme solarized
+" colorscheme flattened_light " like solarized-light
+" colorscheme lightning " i'm ok with this one
 
-" Open NerdTree if no files were specified (if |argv| == 0)
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Syntax highlighting for Typescript
+Plug 'leafgarland/typescript-vim'
 
-"End Vundle setup
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug setup end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Remap the leader to something more comfortable
 let mapleader=","
@@ -227,9 +182,6 @@ set colorcolumn=80              " set ruler at 80
 
 " Enable colors
 set t_Co=256
-" color scheme
-colorscheme lucid " i like this one
-" colorscheme solarized
 
 " Remember and reload file state. Not the file itself.
 " Inteded for folds.
@@ -267,8 +219,9 @@ let NERDTreeIgnore = ['\.pyc$', 'node_modules', 'vendor']
 " Close NERDTree on open
 "let g:NERDTreeQuitOnOpen = 1
 
-" Typing ii will switch to Normal mode.
-imap ii <Esc>
+" Typing jj or kk will switch to Normal mode.
+imap jj <Esc>
+imap kk <Esc>
 
 " <Ctrl-c> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-c> :nohl<CR><C-l>
@@ -287,11 +240,11 @@ if has("autocmd")
 endif
 
 " Enable clipboard sharing
-"set clipboard=unnamed
+set clipboard=unnamed
 
 " Program to use for evaluating Python code. Setting this makes startup faster.
 " Also useful for working with virtualenvs.
-let g:python_host_prog  = '/usr/local/bin/python'
+let g:python_host_prog  = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,3 +267,36 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 ":inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 set dictionary="/usr/dict/words
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Enable project specific .vimrc files and disable autocmd shell commands
+set exrc
+set secure
+
+" Strip trailing whitespaces
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+"autocmd FileType c,cpp,java,php,ruby,python,markdown autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Protect large files from sourcing and other overhead.
+" Files become read only
+if !exists("my_auto_commands_loaded")
+  let my_auto_commands_loaded = 1
+  " Large files are > 10M
+  " Set options:
+  " eventignore+=FileType (no syntax highlighting etc
+  " assumes FileType always on)
+  " noswapfile (save copy of file)
+  " bufhidden=unload (save memory when other file is viewed)
+  " buftype=nowrite (file is read-only)
+  " undolevels=-1 (no undo possible)
+  let g:LargeFile = 1024 * 1024 * 10
+  augroup LargeFile
+    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+    augroup END
+  endif
