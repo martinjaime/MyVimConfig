@@ -26,6 +26,10 @@ Plug 'jiangmiao/auto-pairs'
 
 " Git gutter info to display added, modified, and removed lines.
 Plug 'airblade/vim-gitgutter'
+set updatetime=400
+
+" git commands
+Plug 'tpope/vim-fugitive'
 
 " Scala plugin
 Plug 'derekwyatt/vim-scala'
@@ -70,8 +74,11 @@ Plug 'honza/vim-snippets'
 " Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-" let g:vim_markdown_folding_disabled = 1 " disable folding
+let g:vim_markdown_folding_disabled = 1 " disable folding
 set conceallevel=2 " Conceal nonprinting markdown characters
+let g:vim_markdown_math = 1
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_autowrite = 1
 
 " vim surround
 Plug 'tpope/vim-surround'
@@ -107,14 +114,15 @@ Plug 'tpope/vim-commentary'
 
 "" colorschemes
 Plug 'flazz/vim-colorschemes'
-colorscheme lucid " i like this one
-" colorscheme molokai
-colorscheme solarized
-" colorscheme flattened_light " like solarized-light
-" colorscheme lightning " i'm ok with this one
 
 " Syntax highlighting for Typescript
 Plug 'leafgarland/typescript-vim'
+
+" Typescript navigation, and completion. like IDE
+" Plug 'quramy/tsuquyomi'
+
+" " syntax checker for a shitton of languages
+" Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -158,6 +166,8 @@ set completeopt-=preview
 set title                       " show window title
 set autoindent                  " autoindent when pressing Enter
 set background=dark             " use a dark scheme
+set autoread                    " detect change, trigger file read
+au FocusGained,BufEnter * :checktime " trigger autoread when changing buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,6 +192,12 @@ set colorcolumn=80              " set ruler at 80
 
 " Enable colors
 set t_Co=256
+" colorscheme lucid " i like this one
+" colorscheme bubblegum-256-dark
+" colorscheme molokai
+" colorscheme solarized
+colorscheme solarized8_light
+" colorscheme lightning " very similar to solarized light. but better.
 
 " Remember and reload file state. Not the file itself.
 " Inteded for folds.
@@ -213,11 +229,19 @@ autocmd FileType crontab    setlocal nobackup nowritebackup
 "noremap :W :w
 "noremnp :Q :q
 
-" Toggle NERDTree
-nmap <silent> <C-D> :NERDTreeToggle<CR>
+
+" NERDTree stuff
+autocmd vimenter * NERDTree & NERDTree " Instantiate NERDTree on startup
+" TODO: put the following into a function
+nnoremap <silent> <expr> <C-D> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+nmap <silent> <C-B> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'node_modules', 'vendor']
-" Close NERDTree on open
-"let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" close nerdtree if it's the only pane open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Typing jj or kk will switch to Normal mode.
 imap jj <Esc>
@@ -247,6 +271,7 @@ set clipboard=unnamed
 let g:python_host_prog  = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+let python_highlight_all=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete functionality. Uncomment if YouCompleteMe does not work.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
