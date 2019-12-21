@@ -1,4 +1,4 @@
-# My Vim Configuration
+# Vim Configuration
 A work in Progress. Inspired by thunderboltsid's [vim-configuration](https://github.com/thunderboltsid/vim-configuration)
 
 ## Setup
